@@ -24,7 +24,6 @@ SAVER is implemented on top of Qwen2-VL and introduces modular routing, fusion, 
 ## 📦 Setup
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
 cd SAVER
 
 conda create -n saver python=3.10
