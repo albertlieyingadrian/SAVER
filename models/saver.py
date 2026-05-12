@@ -461,13 +461,6 @@ class SAVERModel(nn.Module):
         Z = torch.stack(z_views, dim=0)
         gate_w = gate.view(-1, 1, 1)
         z_i = (gate_w * Z).sum(dim=0)
-        
-        # # ---- MoE aggregation ----
-        # Z = torch.stack(z_views, dim=0)   # (V, N, D)
-        # z_i = self.fusion(                # (N, D)
-        #     Z,
-        #     gate[0]
-        # )
 
         # Take the first element of vision_feats for replacement
         vision_feats_ = vision_feats[0]
