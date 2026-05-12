@@ -152,29 +152,3 @@ All evaluation configurations can be modified in:
 configs/eval.yaml
 ```
 
-
-## ⚙️ Configuration
-
-Training and evaluation settings are managed through YAML configuration files.
-
-Example:
-
-```yaml
-common:
-  model_name: Qwen/Qwen2-VL-7B-Instruct
-
-stage1:
-  output_path: outputs/stage1/router_fusion_ckpt.pt
-
-stage2:
-  output_path: outputs/stage2/soft_prompt_embeddings.pt
-```
-
-
-## 📝 Notes
-
-- The base VLM remains frozen during training.
-- SAVER is implemented using Qwen2-VL.
-- Only lightweight routing, fusion, and prompt-related modules are trained.
-- Checkpoint paths and dataset paths should be configured manually before execution.
-
