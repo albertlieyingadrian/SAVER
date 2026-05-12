@@ -1,4 +1,4 @@
-# SAVER: Semantic-Aware Multi-View Emotion Reasoning in Vision-Language Models
+# SAVER: Selective and Adaptive Multi-View Routing for Visual Emotion Reasoning in Vision-Language Models
 
 <p align="center">
   <img src="figures/saver_framework.png" alt="SAVER Architecture" width="95%">
