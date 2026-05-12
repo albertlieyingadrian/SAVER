@@ -14,7 +14,7 @@ Unlike conventional visual emotion analysis methods that rely on global visual r
 The framework consists of two stages:
 
 - **Stage 1:** View-specific representation learning
-- **Stage 2:** Semantic-aware selective multi-view fusion
+- **Stage 2:** Selective multi-view routing and reasoning
 
 SAVER is implemented on top of Qwen2-VL and introduces modular routing, fusion, and vision-token replacement mechanisms for efficient emotion reasoning without fine-tuning the entire VLM.
 
