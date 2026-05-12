@@ -253,10 +253,10 @@ class SAVERModel(nn.Module):
 
             Z = torch.stack(z_views, dim=0)                # (V, N, D)
 
-            z_i = self.fusion(
-                Z,
-                gate[i]
-            )
+            weighted_sum = (gate[i].view(-1,1,1) * Z).sum(dim=0)
+            Z_mean = Z.mean(dim=0)   # baseline 평균
+            z_i = Z_mean + self.fusion * (weighted_sum - Z_mean)
+            
             z_all.append(z_i)
             
         z_all = torch.stack(z_all, dim=0)                  # (B, N, D)
