@@ -189,4 +189,3 @@ stage2:
 - Only lightweight routing, fusion, and prompt-related modules are trained.
 - Checkpoint paths and dataset paths should be configured manually before execution.
 
----
