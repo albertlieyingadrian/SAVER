@@ -111,8 +111,6 @@ class SAVERModel(nn.Module):
                 # Freeze everything (can be relaxed if you add extra modules)
                 param.requires_grad = (
                     ("router" in name)
-                    or
-                    ("fusion" in name)
                 )
                 
 
@@ -458,11 +456,18 @@ class SAVERModel(nn.Module):
             q = self.q_view[view]
             z, _ = self.cross_attn[view](q.unsqueeze(0), vision_feats, vision_feats)
             z_views.append(z.squeeze(0))
-
+            
         # ---- MoE aggregation ----
-        Z = torch.stack(z_views, dim=0)   # (V, N, D)
-        gate_w = gate.view(-1, 1, 1)      # (V, 1, 1)
-        z_i = (gate_w * Z).sum(dim=0)     # (N, D)
+        Z = torch.stack(z_views, dim=0)
+        gate_w = gate.view(-1, 1, 1)
+        z_i = (gate_w * Z).sum(dim=0)
+        
+        # # ---- MoE aggregation ----
+        # Z = torch.stack(z_views, dim=0)   # (V, N, D)
+        # z_i = self.fusion(                # (N, D)
+        #     Z,
+        #     gate[0]
+        # )
 
         # Take the first element of vision_feats for replacement
         vision_feats_ = vision_feats[0]
